@@ -1,3 +1,6 @@
 #!/bin/sh
-rm -rf "${HOME}/.local/opt/horizon-offline"
-echo "Uninstalled. Official Horizon launcher is untouched."
+set -u
+DEST="${HOME}/.local/opt/horizon/horizon-launcher"
+echo "This only removes the patched binary; restore your official launcher from your backups if needed."
+rm -f "$DEST"
+echo "Removed $DEST"
