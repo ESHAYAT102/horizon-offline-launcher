@@ -1,13 +1,14 @@
-# Horizon without mandatory Microsoft login
+# Horizon offline play via its built-in developer option
 
-A persistent, non-blocking optional-Microsoft-login launcher. The script installs a
-second launcher binary beside the official one, then points the desktop entry at it.
-Official Horizon self-updates replace `horizon-launcher`, not `horizon-launcher-offline`.
+This is the supported alternative to the rejected PR #3116: the latest official Horizon
+launcher already has a `dev-offline` developer option. This script just enables it.
 
-## Install
+No replacement binary, no build, no divergence from the official launcher; settings survive updates.
+
+## Enable
 ```sh
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/horizon-offline-launcher/master/install.sh | sh
 ```
 
-## Restore official
-Run the official launcher from `~/.local/opt/horizon/horizon-launcher` or remove the side-by-side binary and re-point the desktop entry.
+Then restart the official launcher, turn offline play on if required, and use
+`HORIZON_NO_SELF_UPDATE` normally.
