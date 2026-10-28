@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-ASSET_URL="https://github.com/ESHAYAT102/horizon-offline-launcher/releases/download/v0.2.0-optional-signin-1/horizon-launcher"
+ASSET_URL="https://github.com/ESHAYAT102/horizon-offline-launcher/releases/download/v0.2.0-optional-signin-2/horizon-launcher"
 DIR="${HOME}/.local/opt/horizon"
 BIN="${DIR}/horizon-launcher-offline"
 BACKUP="${HOME}/.local/share/horizon-launcher/local-fix-backups/offline-signin-$(date -u +%Y%m%dT%H%M%SZ)"
