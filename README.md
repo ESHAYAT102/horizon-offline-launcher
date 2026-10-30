@@ -22,13 +22,16 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/horizon-offline-launcher
 
 Restart the official launcher and select the new `local-visual-api-*` version
 if it was not selected automatically. Keep the official version installed.
-This build serves native visual hook API 8 for native Emberlight v0.3.0;
-the older `.hmod` needs the separate WebAssembly test client and cannot run on
-current Horizon. Set `HORIZON_API_BASE_VERSION` to a different *installed* compatible version
+This build serves native visual hook API 9 for [Better Visuals](https://github.com/ESHAYAT102/horizon-better-visuals),
+including mineral-only emissive overlays. Install its `.hnmod` in a separate native instance
+and build it with the launcher's native-mod workflow; the older `.hmod` needs
+the separate WebAssembly test client and cannot run on current Horizon.
+Set `HORIZON_API_BASE_VERSION` to a different *installed* compatible version
 if `v0.2.97` is unavailable. The installer makes a timestamped backup of
 `settings.json` before changing `selected` and `dev_offline`. It refuses to
 overwrite an existing local version; uninstalling does not remove versions.
 
 For local source validation, `HORIZON_API_SOURCE` accepts a checkout at the
 pinned PR commit. `HORIZON_LAUNCHER_HOME` points at a scratch launcher home for
-testing. Neither option alters official game binaries.
+testing. Set `HORIZON_API_SELECT=0` to install without changing the launcher's
+current selection. Neither option alters official game binaries.

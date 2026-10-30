@@ -3,7 +3,7 @@ set -eu
 
 # A source checkout can be supplied for local development; published installs
 # use the reviewed PR commit below, not a moving branch or a binary download.
-commit=fd46f59c7df0bb935b3601227a7ddc3fbaffea32
+commit=efd3dcaf86ea031fbfab55f4cd0618afc66912f2
 launcher_home=${HORIZON_LAUNCHER_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/horizon-launcher}
 versions="$launcher_home/versions"
 base=${HORIZON_API_BASE_VERSION:-v0.2.97}
@@ -33,6 +33,10 @@ cp "$tmp/target/release/horizon-ctl" "$stage/.horizon-ctl.new"
 mv "$stage/.horizon-client.new" "$stage/horizon-client"
 mv "$stage/.horizon-ctl.new" "$stage/horizon-ctl"
 mv "$stage" "$dest"
+if [ "${HORIZON_API_SELECT:-1}" = 0 ]; then
+    echo "Installed $tag alongside official versions; current launcher selection unchanged."
+    exit 0
+fi
 python3 - "$settings" "$tag" <<'PY'
 import json, os, pathlib, shutil, sys, tempfile, time
 path = pathlib.Path(sys.argv[1]); tag = sys.argv[2]
