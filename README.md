@@ -1,7 +1,8 @@
 # Horizon offline play via its built-in developer option
 
 The official Horizon launcher has a `dev-offline` developer option. The installer
-enables it and builds a game client from the pinned source of [mod API PR #2888](https://github.com/horizon-rust/horizon/pull/2888).
+enables it and builds a game client from pinned [native visual-hook PR #4413](https://github.com/horizon-rust/horizon/pull/4413)
+(the successor to obsolete [PR #2888](https://github.com/horizon-rust/horizon/pull/2888)).
 
 It installs the client as a **separate local version**, selects it and keeps the
 stock launcher, official versions, worlds and other mods unchanged. It copies
@@ -21,7 +22,9 @@ curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/horizon-offline-launcher
 
 Restart the official launcher and select the new `local-visual-api-*` version
 if it was not selected automatically. Keep the official version installed.
-Set `HORIZON_API_BASE_VERSION` to a different *installed* compatible version
+This build serves native visual hook API 8 for native Emberlight v0.3.0;
+the older `.hmod` needs the separate WebAssembly test client and cannot run on
+current Horizon. Set `HORIZON_API_BASE_VERSION` to a different *installed* compatible version
 if `v0.2.97` is unavailable. The installer makes a timestamped backup of
 `settings.json` before changing `selected` and `dev_offline`. It refuses to
 overwrite an existing local version; uninstalling does not remove versions.

@@ -3,7 +3,7 @@ set -eu
 
 # A source checkout can be supplied for local development; published installs
 # use the reviewed PR commit below, not a moving branch or a binary download.
-commit=99f8f215b1e8b8170bdb51daaf2298bd1b981661
+commit=fd46f59c7df0bb935b3601227a7ddc3fbaffea32
 launcher_home=${HORIZON_LAUNCHER_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/horizon-launcher}
 versions="$launcher_home/versions"
 base=${HORIZON_API_BASE_VERSION:-v0.2.97}
@@ -26,7 +26,7 @@ if [ -z "$source" ]; then
 fi
 test "$(git -C "$source" rev-parse HEAD)" = "$commit" || { echo "Source must be PR commit $commit" >&2; exit 1; }
 PATH="${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin:$PATH" \
-    "${CARGO:-cargo}" build --release --manifest-path "$source/Cargo.toml" -p horizon-client --features mods --bin horizon-client --bin horizon-ctl --target-dir "$tmp/target"
+    "${CARGO:-cargo}" build --release --manifest-path "$source/Cargo.toml" -p horizon-client --bin horizon-client --bin horizon-ctl --target-dir "$tmp/target"
 cp -a --reflink=auto "$versions/$base/." "$stage/"
 cp "$tmp/target/release/horizon-client" "$stage/.horizon-client.new"
 cp "$tmp/target/release/horizon-ctl" "$stage/.horizon-ctl.new"
