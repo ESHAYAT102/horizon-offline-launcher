@@ -7,10 +7,15 @@ python3 - "$commit" "$version" "$gamehome" <<'PYEOF'
 import json, pathlib, shutil, sys, tempfile, time, zipfile, urllib.request, os
 version=sys.argv[2]; gamehome=pathlib.Path(sys.argv[3])
 bundle=gamehome/'.better-visuals-bundle.hnmod'
-url=f'https://github.com/ESHAYAT102/horizon-better-visuals/releases/download/{version}/horizon_better_visuals.hnmod'
+import os
+bundled=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'better-visuals','native','horizon_better_visuals.hnmod')
+url='file://'+bundled if os.path.exists(bundled) else f'https://github.com/ESHAYAT102/horizon-better-visuals/releases/download/{version}/horizon_better_visuals.hnmod'
 try:
-    with urllib.request.urlopen(url) as r:
-        bundle.write_bytes(r.read())
+    if url.startswith('file://'):
+        bundle.write_bytes(open(url[7:],'rb').read())
+    else:
+        with urllib.request.urlopen(url) as r:
+            bundle.write_bytes(r.read())
 except Exception as e:
     raise SystemExit(f'cannot download Better Visuals: {e}')
 dest=gamehome/'horizon-native-mods/horizon_better_visuals.hnmod'

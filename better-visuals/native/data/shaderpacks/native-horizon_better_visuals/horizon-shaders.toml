@@ -1,0 +1,19 @@
+schema = 1
+id = "better_visuals"
+name = "Better Visuals"
+version = "0.1.3"
+api = "0.1"
+description = "A restrained warm sky and one low-cost glow pass."
+authors = ["T3Code"]
+license = "MIT"
+
+[sky]
+file = "sky.wgsl"
+name = "Low sun"
+
+[[post]]
+file = "glow.wgsl"
+name = "Soft glow"
+
+[budget]
+gpu_ms = 1.5

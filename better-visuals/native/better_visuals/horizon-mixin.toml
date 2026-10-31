@@ -1,0 +1,48 @@
+[mod]
+id = "horizon_better_visuals"
+version = "0.1.3"
+priority = 100
+
+[compatibility]
+horizon_revision = "efc875c37e174ac27cebb712c2449c0fdc17a484"
+
+[[module]]
+id = "runtime"
+file = "crates/horizon-client/src/game.rs"
+name = "better_visuals_native"
+source = "runtime.rs"
+
+[[injection]]
+id = "visuals"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_visuals"
+helper = "visuals.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "rims", ty = "&mut Vec<crate::game::native_hooks::NativeBlockRim>", value = "&mut *rims" },
+  { name = "lights", ty = "&mut Vec<crate::game::native_hooks::NativeColoredLight>", value = "&mut *lights" },
+]
+
+[[injection]]
+id = "tick"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_tick"
+helper = "tick.rs"
+bindings = [{ name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" }]
+
+[[injection]]
+id = "emissive"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_emissive"
+helper = "emissive.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+  { name = "layers", ty = "&mut Vec<(&'static str, &'static str)>", value = "&mut *layers" },
+]
+
+[[injection]]
+id = "list"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
+helper = "list.rs"
+bindings = [{ name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" }]
