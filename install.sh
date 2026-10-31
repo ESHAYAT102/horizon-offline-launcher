@@ -3,7 +3,7 @@ set -eu
 
 # A source checkout can be supplied for local development; published installs
 # use the reviewed PR commit below, not a moving branch or a binary download.
-commit=5fb61a983b041cce9665189a88d12af14da7462b
+commit=2f297750d786eb8186ef69edff84794876bd653d
 launcher_home=${HORIZON_LAUNCHER_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/horizon-launcher}
 versions="$launcher_home/versions"
 base=${HORIZON_API_BASE_VERSION:-v0.2.97}
