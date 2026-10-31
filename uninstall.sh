@@ -1,5 +1,6 @@
 #!/bin/sh
 set -eu
-launcher_home=${HORIZON_LAUNCHER_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/horizon-launcher}
-echo "Local API clients are separate versions under $launcher_home/versions/local-visual-api-*"
-echo 'Select an official version in the launcher before removing an API client. This script does not remove game versions, worlds, mods or the stock launcher.'
+echo "This installer does not automatically remove its built version; select the"
+echo "official version in the Horizon launcher and delete the Better Horizon"
+echo "version directory manually when no longer needed."
+echo "Use setup-mods.sh uninstalled via its own helper if you wish to remove Better Visuals."

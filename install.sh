@@ -53,4 +53,5 @@ try:
 finally:
     if os.path.exists(tmp): os.unlink(tmp)
 PY
+sh "$(dirname "$0")/setup-mods.sh"
 echo "Installed $tag alongside official versions; restart the official launcher."
