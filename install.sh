@@ -11,6 +11,7 @@ source=${HORIZON_API_SOURCE:-}
 tag=local-visual-api-$(printf '%s' "$commit" | cut -c1-9)
 dest="$versions/$tag"
 settings="$launcher_home/settings.json"
+rm -rf "${XDG_DATA_HOME:-$HOME/.local/share}/horizon/instances/nightly" 2>/dev/null || true
 test -f "$versions/$base/.installed" || { echo "Install official Horizon $base first (or set HORIZON_API_BASE_VERSION)." >&2; exit 1; }
 test -d "$versions/$base/.local/horizon-client" || { echo "Base version has no prepared client resources." >&2; exit 1; }
 test ! -e "$dest" || { echo "Already installed: $dest" >&2; exit 1; }
