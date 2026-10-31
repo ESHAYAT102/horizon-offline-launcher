@@ -1,4 +1,4 @@
-# Horizon offline play via its built-in developer option
+# Better Horizon launcher installer (formerly better-horizon)
 
 The official Horizon launcher has a `dev-offline` developer option. The installer
 enables it and builds a game client from pinned [native visual-hook PR #4413](https://github.com/horizon-rust/horizon/pull/4413)
@@ -17,7 +17,7 @@ You need git, Python 3, Rust and Horizon's Linux build dependencies. The build
 can take several minutes and needs several GB of free space.
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/horizon-offline-launcher/master/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/better-horizon/master/install.sh | sh
 ```
 
 Restart the official launcher and select the new `local-visual-api-*` version
